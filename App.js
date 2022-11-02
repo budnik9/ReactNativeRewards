@@ -1,20 +1,23 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {SafeAreaView} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
 
-const styles = StyleSheet.create({
-  text: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-    fontSize: 30,
-  },
-});
+import Layout from './src/components/Layout';
+import StoreProvider from './src/context/StoreContext';
+import TabNavigator from './src/components/TabNavigator';
 
-const App = () => {
-  return (
-    <View>
-      <Text style={styles.text}>New React Native App</Text>
-    </View>
-  );
-};
+import {globalStyles} from './styles';
+
+const App = () => (
+  <NavigationContainer>
+    <SafeAreaView style={globalStyles.flex1}>
+      <StoreProvider>
+        <Layout>
+          <TabNavigator />
+        </Layout>
+      </StoreProvider>
+    </SafeAreaView>
+  </NavigationContainer>
+);
 
 export default App;
